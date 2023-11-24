@@ -7,7 +7,7 @@ import {
 import {Text} from '../Text/Text';
 import {useTheme} from '@shopify/restyle';
 import {Theme} from '../../theme/theme';
-import {Box} from '../Box/Box';
+import {Box, TouchableOpacityBox} from '../Box/Box';
 
 interface ButtonProps {
   title: string;
@@ -16,7 +16,7 @@ interface ButtonProps {
 
 export function Button({title, loading}: ButtonProps) {
   return (
-    <Box
+    <TouchableOpacityBox
       backgroundColor="buttonPrimary"
       height={50}
       alignItems="center"
@@ -30,6 +30,6 @@ export function Button({title, loading}: ButtonProps) {
           {title}
         </Text>
       )}
-    </Box>
+    </TouchableOpacityBox>
   );
 }
