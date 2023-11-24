@@ -12,8 +12,11 @@ import {Text} from './src/components/Text/Text';
 function App(): JSX.Element {
   return (
     <SafeAreaView>
-      <Text preset="paragraphLarge" style={{color: 'red'}}>
+      <Text preset="paragraphLarge" italic bold>
         Testando
+      </Text>
+      <Text preset="paragraphLarge" bold>
+        Fonte Padrao
       </Text>
     </SafeAreaView>
   );
