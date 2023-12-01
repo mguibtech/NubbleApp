@@ -7,14 +7,14 @@ import {
 import {Text} from '../Text/Text';
 import {useTheme} from '@shopify/restyle';
 import {Theme} from '../../theme/theme';
-import {Box, TouchableOpacityBox} from '../Box/Box';
+import {Box, TouchableOpacityBox, TouchableOpacityBoxProps} from '../Box/Box';
 
-interface ButtonProps {
+interface ButtonProps extends TouchableOpacityBoxProps {
   title: string;
   loading?: boolean;
 }
 
-export function Button({title, loading}: ButtonProps) {
+export function Button({title, loading, ...touchableOpacityBoxProps}: ButtonProps) {
   return (
     <TouchableOpacityBox
       backgroundColor="buttonPrimary"
@@ -22,7 +22,9 @@ export function Button({title, loading}: ButtonProps) {
       alignItems="center"
       justifyContent="center"
       borderRadius="s16"
-      paddingHorizontal="s20">
+      paddingHorizontal="s20"
+      {...touchableOpacityBoxProps}
+      >
       {loading ? (
         <ActivityIndicator />
       ) : (
