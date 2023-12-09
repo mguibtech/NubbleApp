@@ -1,14 +1,11 @@
 import React from 'react';
-import {
-  ActivityIndicator,
-  Button as RNButton,
-  TouchableOpacity,
-} from 'react-native';
+import {Button as RNButton, TouchableOpacity} from 'react-native';
 import {Text} from '../Text/Text';
 import {useTheme} from '@shopify/restyle';
 import {Theme, ThemeColors} from '../../theme/theme';
 import {Box, TouchableOpacityBox, TouchableOpacityBoxProps} from '../Box/Box';
 import {buttonPresets} from './buttonPresets';
+import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
 
 export type ButtonPreset = 'primary' | 'outline' | 'secondary';
 
@@ -37,7 +34,7 @@ export function Button({
       {...buttonPresset.container}
       {...touchableOpacityBoxProps}>
       {loading ? (
-        <ActivityIndicator />
+        <ActivityIndicator color={buttonPresset.content} />
       ) : (
         <Text preset="paragraphMedium" bold color={buttonPresset.content}>
           {title}

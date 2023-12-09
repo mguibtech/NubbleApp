@@ -26,6 +26,7 @@ function App(): JSX.Element {
           preset="secondary"
           title="teste"
           mb="s10"
+          loading
           marginHorizontal="s20"
         />
 
