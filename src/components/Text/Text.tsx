@@ -5,37 +5,61 @@ import {
   TextStyle,
 } from 'react-native';
 
-//font size e line height
-interface TextProps extends RNTextProps {
+import {createText} from '@shopify/restyle';
+import {Theme} from '../../theme/theme';
+
+const SRText = createText<Theme>();
+type SRTextProps = React.ComponentProps<typeof SRText>;
+
+interface TextProps extends SRTextProps {
   preset?: TextVariants;
   bold?: boolean;
-  semiBold?: boolean;
   italic?: boolean;
+  semiBold?: boolean;
 }
-
 export function Text({
   children,
   preset = 'paragraphMedium',
-  bold,
-  italic,
-  semiBold,
   style,
-  ...rest
+  bold,
+  semiBold,
+  italic,
+  ...SRTextProps
 }: TextProps) {
   const fontFamily = getFontFamily(preset, bold, italic, semiBold);
+
   return (
-    <RNText style={[$fontSizes[preset], {fontFamily}, style]} {...rest}>
+    <SRText
+      color="backgroundContrast"
+      style={[$fontSizes[preset], {fontFamily}, style]}
+      {...SRTextProps}>
       {children}
-    </RNText>
+    </SRText>
   );
 }
 
 function getFontFamily(
   preset: TextVariants,
-  bold: boolean,
-  italic: boolean,
-  semiBold: boolean,
+  bold?: boolean,
+  italic?: boolean,
+  semiBold?: boolean,
 ) {
+  //   if (bold && italic) {
+  //     return $fontFamily.boldItalic;
+  //   }
+  //   if (bold) {
+  //     return $fontFamily.bold;
+  //   }
+  //   if (italic) {
+  //     return $fontFamily.italic;
+  //   }
+  //   if (semiBold && italic) {
+  //     return $fontFamily.mediumItalic;
+  //   }
+  //   if (semiBold) {
+  //     return $fontFamily.medium;
+  //   }
+  //   return $fontFamily.regular;
   if (
     preset === 'headingLarge' ||
     preset === 'headingMedium' ||
@@ -43,6 +67,7 @@ function getFontFamily(
   ) {
     return italic ? $fontFamily.boldItalic : $fontFamily.bold;
   }
+
   switch (true) {
     case bold && italic:
       return $fontFamily.boldItalic;
@@ -69,7 +94,7 @@ type TextVariants =
   | 'paragraphCaption'
   | 'paragraphCaptionSmall';
 
-const $fontSizes: Record<TextVariants, TextStyle> = {
+export const $fontSizes: Record<TextVariants, TextStyle> = {
   headingLarge: {fontSize: 32, lineHeight: 38.4},
   headingMedium: {fontSize: 22, lineHeight: 26.4},
   headingSmall: {fontSize: 18, lineHeight: 23.4},
@@ -82,7 +107,7 @@ const $fontSizes: Record<TextVariants, TextStyle> = {
   paragraphCaptionSmall: {fontSize: 10, lineHeight: 14},
 };
 
-const $fontFamily = {
+export const $fontFamily = {
   black: 'Satoshi-Black',
   blackItalic: 'Satoshi-BlackItalic',
   bold: 'Satoshi-Bold',
