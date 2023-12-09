@@ -7,25 +7,29 @@ import {Box, TouchableOpacityBox, TouchableOpacityBoxProps} from '../Box/Box';
 import {buttonPresets} from './buttonPresets';
 import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
 
-export type ButtonPreset = 'primary' | 'outline' | 'secondary';
+export type ButtonPreset = 'primary' | 'outline';
 
 interface ButtonProps extends TouchableOpacityBoxProps {
   title: string;
   loading?: boolean;
   preset?: ButtonPreset;
+  disabled?: boolean;
 }
 
 export function Button({
   title,
   loading,
   preset = 'primary',
+  disabled,
   ...touchableOpacityBoxProps
 }: ButtonProps) {
-  const buttonPresset = buttonPresets[preset];
+  const buttonPresset =
+    buttonPresets[preset][disabled ? 'disabled' : 'default'];
 
   return (
     <TouchableOpacityBox
       // backgroundColor="buttonPrimary"
+      disabled={disabled || loading}
       height={50}
       alignItems="center"
       justifyContent="center"

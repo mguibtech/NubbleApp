@@ -22,15 +22,7 @@ function App(): JSX.Element {
         </Text>
         <Text preset="headingLarge">Fonte Padrao</Text>
 
-        <Button
-          preset="secondary"
-          title="teste"
-          mb="s10"
-          loading
-          marginHorizontal="s20"
-        />
-
-        <Button title="Primary" marginHorizontal="s20" />
+        <Button title="Primary" disabled marginHorizontal="s20" />
         <Button preset="outline" title="Outline" marginHorizontal="s20" />
         <Button
           preset="outline"
