@@ -23,17 +23,19 @@ function App(): JSX.Element {
         <Text preset="headingLarge">Fonte Padrao</Text>
 
         <Button
+          preset="secondary"
           title="teste"
-          loading
           mb="s10"
           marginHorizontal="s20"
-          backgroundColor="success"
         />
 
+        <Button title="Primary" marginHorizontal="s20" />
+        <Button preset="outline" title="Outline" marginHorizontal="s20" />
         <Button
-          title="Loading"
+          preset="outline"
+          loading
+          title="Outline"
           marginHorizontal="s20"
-          backgroundColor="carrotSecondary"
         />
       </SafeAreaView>
     </ThemeProvider>
