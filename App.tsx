@@ -14,6 +14,7 @@ import {theme} from './src/theme/theme';
 import {Box} from './src/components/Box/Box';
 import {EyeOffIcon} from './src/assets/icons/EyeOffIcon';
 import {EyeOnIcon} from './src/assets/icons/EyeOnIcon';
+import {Icon} from './src/components/Icon/Icon';
 
 function App(): JSX.Element {
   return (
@@ -23,9 +24,8 @@ function App(): JSX.Element {
           Testando
         </Text>
         <Text preset="headingLarge">Fonte Padrao</Text>
-
-        <EyeOffIcon color="blue" size={80} />
-        <EyeOnIcon color="blue" size={80} />
+        <Icon name="eyeOn" color="blue" size={40} />
+        <Icon name="eywOff" color="blue" size={40} />
       </SafeAreaView>
     </ThemeProvider>
   );

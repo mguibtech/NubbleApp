@@ -6,7 +6,7 @@ interface Props {
   color?: string;
 }
 
-export function EyeOnIcon({size = 20, color = 'dark'}: Props) {
+export function EyeOnIcon({size = 20, color = 'black'}: Props) {
   return (
     <Svg width={size} height={size} viewBox="0 0 20 20" fill="none">
       <Path
