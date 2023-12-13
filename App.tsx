@@ -24,8 +24,8 @@ function App(): JSX.Element {
           Testando
         </Text>
         <Text preset="headingLarge">Fonte Padrao</Text>
-        <Icon name="eyeOn" color="blue" size={40} />
-        <Icon name="eywOff" color="blue" size={40} />
+        <Icon name="eyeOn" color="errorLight" size={40} />
+        <Icon name="eywOff" color="error" size={40} />
       </SafeAreaView>
     </ThemeProvider>
   );

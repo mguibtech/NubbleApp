@@ -1,14 +1,25 @@
 import React from 'react';
 import {EyeOnIcon} from '../../assets/icons/EyeOnIcon';
 import {EyeOffIcon} from '../../assets/icons/EyeOffIcon';
+import {Theme, ThemeColors} from '../../theme/theme';
+import {useTheme} from '@shopify/restyle';
+import {useAppTheme} from '../../hooks/useAppTheme';
+
+export interface IconBase {
+  size?: number;
+  color?: string;
+}
 
 interface Props {
   name: IconName;
+  color?: ThemeColors;
+  size?: number;
 }
 
-export function Icon({name}: Props) {
+export function Icon({name, color = 'backgroundContrast', size}: Props) {
+  const {colors} = useAppTheme();
   const SVGIcon = iconRegistry[name];
-  return <SVGIcon />;
+  return <SVGIcon color={colors[color]} size={size} />;
 }
 
 const iconRegistry = {
