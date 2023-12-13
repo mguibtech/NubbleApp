@@ -12,6 +12,8 @@ import {Button} from './src/components/Button/Button';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from './src/theme/theme';
 import {Box} from './src/components/Box/Box';
+import {EyeOffIcon} from './src/assets/icons/EyeOffIcon';
+import {EyeOnIcon} from './src/assets/icons/EyeOnIcon';
 
 function App(): JSX.Element {
   return (
@@ -22,14 +24,8 @@ function App(): JSX.Element {
         </Text>
         <Text preset="headingLarge">Fonte Padrao</Text>
 
-        <Button title="Primary" disabled marginHorizontal="s20" />
-        <Button preset="outline" title="Outline" marginHorizontal="s20" />
-        <Button
-          preset="outline"
-          loading
-          title="Outline"
-          marginHorizontal="s20"
-        />
+        <EyeOffIcon color="blue" size={80} />
+        <EyeOnIcon color="blue" size={80} />
       </SafeAreaView>
     </ThemeProvider>
   );
