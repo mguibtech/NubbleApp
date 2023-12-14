@@ -33,7 +33,11 @@ function App(): JSX.Element {
             <TextInput label="E-mail" placeholder="Digite seu e-mail" />
           </Box>
           <Box>
-            <TextInput label="Senha" placeholder="Digite sua senha" />
+            <TextInput
+              label="Senha"
+              errorMessage="Testando"
+              placeholder="Digite sua senha"
+            />
           </Box>
 
           <Text mt="s10" preset="paragraphSmall" bold color="primary">
