@@ -10,8 +10,8 @@ function App(): JSX.Element {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        {/* <LoginScreen /> */}
-        <SignUpScreen />
+        <LoginScreen />
+        {/* <SignUpScreen /> */}
       </ThemeProvider>
     </SafeAreaProvider>
   );
