@@ -29,13 +29,16 @@ import {TrashIcon} from '../../assets/icons/TrashIcon';
 import {useAppTheme} from '../../hooks/useAppTheme';
 import {ThemeColors} from '../../theme/theme';
 import {Pressable} from 'react-native';
+import {CheckRoundIcon} from '../../assets/icons/CheckRoundIcon';
+import {ErrorRoundIcon} from '../../assets/icons/ErrorRoundIcon';
+import {MessageRoundIcon} from '../../assets/icons/MessageRoundIcon';
 
 export interface IconBase {
   size?: number;
   color?: string;
 }
 
-interface IconProps {
+export interface IconProps {
   name: IconName;
   color?: ThemeColors;
   size?: number;
@@ -89,6 +92,9 @@ const iconRegistry = {
   search: SearchIcon,
   settings: SettingsIcon,
   trash: TrashIcon,
+  checkRound: CheckRoundIcon,
+  errorRound: ErrorRoundIcon,
+  messageRound: MessageRoundIcon,
 };
 
 type IconType = typeof iconRegistry;
