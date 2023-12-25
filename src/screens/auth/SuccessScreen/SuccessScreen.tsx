@@ -5,12 +5,14 @@ import {Text} from '../../../components/Text/Text';
 import {Button} from '../../../components/Button/Button';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../routes/Routes';
+import {useResetNavigationSuccess} from '../../../components/Hooks/useResetNavigationSuccess';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SuccessScreen'>;
 
 export function SuccessScreen({navigation, route}: ScreenProps) {
   function goBackToBegin() {
     // TODO: Create function of back to login
+    navigation.canGoBack();
   }
 
   return (

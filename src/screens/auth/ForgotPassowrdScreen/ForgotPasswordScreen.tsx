@@ -5,6 +5,7 @@ import {TextInput} from '../../../components/TextInput/TextInput';
 import {Button} from '../../../components/Button/Button';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../routes/Routes';
+import {useResetNavigationSuccess} from '../../../components/Hooks/useResetNavigationSuccess';
 
 type ScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -12,9 +13,10 @@ type ScreenProps = NativeStackScreenProps<
 >;
 
 export function ForgotPasswordScreen({navigation}: ScreenProps) {
+  const {reset} = useResetNavigationSuccess();
+
   function submitForm() {
-    // TODO: Realizar validacao do formulario e recuperacao de senha
-    navigation.navigate('SuccessScreen', {
+    reset({
       title: `Enviamos as intruções ${'\n'} para o seu e-mail`,
       description: `Clique no link enviado no seu e-mail para recuperar sua senha`,
       icon: {
