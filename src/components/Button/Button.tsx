@@ -1,11 +1,11 @@
 import React from 'react';
-import {Button as RNButton, TouchableOpacity} from 'react-native';
-import {Text} from '../Text/Text';
-import {useTheme} from '@shopify/restyle';
-import {Theme, ThemeColors} from '../../theme/theme';
-import {Box, TouchableOpacityBox, TouchableOpacityBoxProps} from '../Box/Box';
+import {
+  Text,
+  ActivityIndicator,
+  TouchableOpacityBox,
+  TouchableOpacityBoxProps,
+} from '@components';
 import {buttonPresets} from './buttonPresets';
-import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
 
 export type ButtonPreset = 'primary' | 'outline';
 
