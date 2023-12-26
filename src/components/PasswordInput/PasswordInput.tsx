@@ -3,7 +3,7 @@ import {TextInput, TextInputProps} from '../TextInput/TextInput';
 import {Icon} from '../Icon/Icon';
 import {Pressable} from 'react-native';
 
-type PasswordInputProps = Omit<TextInputProps, 'RightComponent'>;
+export type PasswordInputProps = Omit<TextInputProps, 'RightComponent'>;
 
 export function PasswordInput(props: PasswordInputProps) {
   const [isSecurityTextEntry, setIsSecurityTextEntry] = useState(true);
