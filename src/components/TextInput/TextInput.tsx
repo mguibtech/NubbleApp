@@ -70,6 +70,7 @@ const $textInputStyle: TextStyle = {
   padding: 0,
   flexGrow: 1,
   flexShrink: 1,
+  // color: 'gray',
 
   fontFamily: $fontFamily.regular,
   ...$fontSizes.paragraphMedium,
