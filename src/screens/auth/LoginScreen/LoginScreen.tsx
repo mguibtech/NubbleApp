@@ -1,5 +1,6 @@
 import React from 'react';
-import {Alert} from 'react-native';
+import { Alert } from 'react-native';
+
 import {
   Text,
   FormPasswordInput,
@@ -8,16 +9,16 @@ import {
   Screen,
 } from '@components';
 
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '@routes';
-import {useForm} from 'react-hook-form';
-import {loginSchema, LoginSchema} from './loginSchema';
-import {zodResolver} from '@hookform/resolvers/zod';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '@routes';
+import { useForm } from 'react-hook-form';
+import { loginSchema, LoginSchema } from './loginSchema';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
 
-export function LoginScreen({navigation}: ScreenProps) {
-  const {control, formState, handleSubmit} = useForm<LoginSchema>({
+export function LoginScreen({ navigation }: ScreenProps) {
+  const { control, formState, handleSubmit } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: '',
@@ -34,7 +35,7 @@ export function LoginScreen({navigation}: ScreenProps) {
     navigation.navigate('ForgotPasswordScreen');
   }
 
-  function submitForm({email, password}: LoginSchema) {
+  function submitForm({ email, password }: LoginSchema) {
     Alert.alert(`Email: ${email} ${`\n`} Senha: ${password}`);
   }
 
@@ -52,7 +53,7 @@ export function LoginScreen({navigation}: ScreenProps) {
         name="email"
         label="E-mail"
         placeholder="Digite seu e-mail"
-        boxProps={{mb: 's20'}}
+        boxProps={{ mb: 's20' }}
       />
 
       <FormPasswordInput
@@ -60,7 +61,7 @@ export function LoginScreen({navigation}: ScreenProps) {
         name="password"
         label="Senha"
         placeholder="Digite sua senha"
-        boxProps={{mb: 's10'}}
+        boxProps={{ mb: 's10' }}
       />
 
       <Text
