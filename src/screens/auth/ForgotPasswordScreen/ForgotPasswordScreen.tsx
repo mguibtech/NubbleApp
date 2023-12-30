@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, Button, Screen, FormTextInput } from '@components';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '@routes';
+
 import { useResetNavigationSuccess } from '@hooks';
 import {
   forgotPasswordSchema,
@@ -9,13 +8,9 @@ import {
 } from './forgotPasswordSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { AuthScreenProps } from 'src/routes/navigationType';
 
-type ScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  'ForgotPasswordScreen'
->;
-
-export function ForgotPasswordScreen({ navigation }: ScreenProps) {
+export function ForgotPasswordScreen({ navigation }: AuthScreenProps<'ForgotPasswordScreen'>) {
   const { reset } = useResetNavigationSuccess();
   const { control, handleSubmit, formState } = useForm<ForgotPasswordSchema>({
     resolver: zodResolver(forgotPasswordSchema),
