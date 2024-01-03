@@ -1,11 +1,11 @@
 import {Button, Screen, Text} from '@components';
+import {AppScreenProps, AppTabScreenProps} from '@routes';
 import React from 'react';
 
-export function NewPostScreen() {
+export function NewPostScreen(props: AppTabScreenProps<'NewPostScreen'>) {
   return (
-    <Screen>
-      <Text preset="headingLarge">New Post Screen</Text>
-      <Button title="NewPostScreen" />
+    <Screen canGoBack>
+      <Text preset="headingSmall">New Post Screen</Text>
     </Screen>
   );
 }

@@ -1,18 +1,16 @@
-import { Button, Screen, Text } from "@components";
-import { AppScreenProps } from "@routes";
-import React from "react";
+import {Button, Screen, Text} from '@components';
+import {AppScreenProps, AppTabScreenProps} from '@routes';
+import React from 'react';
 
+export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
+  function goToSettings() {
+    navigation.navigate('SettingsScreen');
+  }
 
-export function HomeScreen(props: AppScreenProps<'HomeScreen'>) {
-
-    function goToSettings() {
-        props.navigation.navigate('SettingsScreen')
-    }
-
-    return (
-        <Screen>
-            <Text preset="headingLarge">Home Screen</Text>
-            <Button title="Settings" onPress={goToSettings} />
-        </Screen>
-    )
+  return (
+    <Screen>
+      <Text preset="headingLarge">Home Screen</Text>
+      <Button title="Settings" onPress={goToSettings} />
+    </Screen>
+  );
 }

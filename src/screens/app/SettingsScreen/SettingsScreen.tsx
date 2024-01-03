@@ -1,13 +1,19 @@
-import React from "react";
-import { Screen, Text } from "@components";
-import { AppScreenProps } from "@routes";
+import React from 'react';
+import {Button, Screen, Text} from '@components';
+import {AppScreenProps} from '@routes';
 
-
-
-export function SettingsScreen(props: AppScreenProps<'SettingsScreen'>) {
-    return (
-        <Screen canGoBack>
-            <Text preset="headingLarge">Settings Screen</Text>
-        </Screen>
-    )
+export function SettingsScreen({navigation}: AppScreenProps<'SettingsScreen'>) {
+  return (
+    <Screen canGoBack>
+      <Text preset="headingLarge">Settings Screen</Text>
+      <Button
+        title="New Post"
+        onPress={() =>
+          navigation.navigate('AppTabNavigator', {
+            screen: 'NewPostScreen',
+          })
+        }
+      />
+    </Screen>
+  );
 }
