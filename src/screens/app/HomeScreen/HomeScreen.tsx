@@ -10,6 +10,7 @@ import {
   StyleProp,
   ViewStyle,
 } from 'react-native';
+import {HomeHeader} from './components/HomeHeader';
 
 export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
   const [postList, setPostList] = useState<Post[]>([]);
@@ -33,6 +34,7 @@ export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
         data={postList}
         keyExtractor={item => item.id}
         renderItem={renderItem}
+        ListHeaderComponent={<HomeHeader />}
       />
     </Screen>
   );
