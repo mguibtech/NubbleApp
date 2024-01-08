@@ -20,12 +20,12 @@ export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
   }
 
   function renderItem({item}: ListRenderItemInfo<Post>) {
-    return <PostItem key={item.id} post={item} />;
+    return <PostItem post={item} />;
   }
 
   useEffect(() => {
     postService.getList().then(list => setPostList(list));
-  });
+  }, []);
 
   return (
     <Screen style={$screen}>
