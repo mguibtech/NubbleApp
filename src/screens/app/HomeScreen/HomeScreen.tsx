@@ -15,7 +15,7 @@ import {HomeEmpty} from './components/HomeEmpty';
 import {err} from 'react-native-svg';
 
 export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
-  const {postList, error, loading, refetch} = usePostList();
+  const {postList, error, loading, refetch, fetchNexPage} = usePostList();
 
   function goToSettings() {
     navigation.navigate('SettingsScreen');
@@ -32,6 +32,8 @@ export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
         data={postList}
         keyExtractor={item => item.id}
         renderItem={renderItem}
+        onEndReached={fetchNexPage}
+        onEndReachedThreshold={0.1}
         contentContainerStyle={{flex: postList.length === 0 ? 1 : 0}}
         ListHeaderComponent={<HomeHeader />}
         ListEmptyComponent={
