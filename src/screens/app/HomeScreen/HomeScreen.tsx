@@ -7,6 +7,7 @@ import {
   FlatList,
   Image,
   ListRenderItemInfo,
+  RefreshControl,
   StyleProp,
   ViewStyle,
 } from 'react-native';
@@ -15,7 +16,7 @@ import {HomeEmpty} from './components/HomeEmpty';
 import {err} from 'react-native-svg';
 
 export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
-  const {postList, error, loading, refetch, fetchNexPage} = usePostList();
+  const {postList, error, loading, refresh, fetchNexPage} = usePostList();
 
   function goToSettings() {
     navigation.navigate('SettingsScreen');
@@ -33,11 +34,15 @@ export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
         keyExtractor={item => item.id}
         renderItem={renderItem}
         onEndReached={fetchNexPage}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={refresh} />
+        }
+        refreshing={loading}
         onEndReachedThreshold={0.1}
         contentContainerStyle={{flex: postList.length === 0 ? 1 : 0}}
         ListHeaderComponent={<HomeHeader />}
         ListEmptyComponent={
-          <HomeEmpty refetch={refetch} error={error} loading={loading} />
+          <HomeEmpty refetch={refresh} error={error} loading={loading} />
         }
       />
     </Screen>
