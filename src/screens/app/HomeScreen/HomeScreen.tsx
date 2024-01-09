@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Button, PostItem, Screen, Text} from '@components';
-import {AppScreenProps, AppTabScreenProps} from '@routes';
-import {Post, postService} from '@domain';
+import {PostItem, Screen, Text} from '@components';
+import {AppTabScreenProps} from '@routes';
+import {Post, usePostList} from '@domain';
 import {
   Dimensions,
   FlatList,
@@ -15,35 +15,15 @@ import {HomeEmpty} from './components/HomeEmpty';
 import {err} from 'react-native-svg';
 
 export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<boolean | null>(null);
-  const [postList, setPostList] = useState<Post[]>([]);
+  const {postList, error, loading, refetch} = usePostList();
 
   function goToSettings() {
     navigation.navigate('SettingsScreen');
   }
 
-  async function fetchData() {
-    try {
-      setError(null);
-      setLoading(true);
-      const list = await postService.getList();
-      setPostList(list);
-    } catch (er) {
-      console.log('ERROR? =>>>> ' + error);
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  }
-
   function renderItem({item}: ListRenderItemInfo<Post>) {
     return <PostItem post={item} />;
   }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <Screen style={$screen}>
@@ -55,7 +35,7 @@ export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
         contentContainerStyle={{flex: postList.length === 0 ? 1 : 0}}
         ListHeaderComponent={<HomeHeader />}
         ListEmptyComponent={
-          <HomeEmpty refetch={fetchData} error={error} loading={loading} />
+          <HomeEmpty refetch={refetch} error={error} loading={loading} />
         }
       />
     </Screen>
