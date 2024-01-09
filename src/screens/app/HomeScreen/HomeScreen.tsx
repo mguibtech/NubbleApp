@@ -14,9 +14,13 @@ import {
 import {HomeHeader} from './components/HomeHeader';
 import {HomeEmpty} from './components/HomeEmpty';
 import {err} from 'react-native-svg';
+import {useScrollToTop} from '@react-navigation/native';
 
 export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
   const {postList, error, loading, refresh, fetchNexPage} = usePostList();
+
+  const flatListRef = React.useRef<FlatList<Post>>(null);
+  useScrollToTop(flatListRef);
 
   function goToSettings() {
     navigation.navigate('SettingsScreen');
@@ -29,6 +33,7 @@ export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
   return (
     <Screen style={$screen}>
       <FlatList
+        ref={flatListRef}
         showsVerticalScrollIndicator={false}
         data={postList}
         keyExtractor={item => item.id}
