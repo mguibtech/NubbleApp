@@ -1,5 +1,4 @@
 import {MetaDataPageAPI, PageAPI, PageParams, api} from '@api';
-import {postListMock} from './postListMock';
 import {Post, PostAPI} from './postTypes';
 
 async function getList(params?: PageParams): Promise<PageAPI<PostAPI>> {
