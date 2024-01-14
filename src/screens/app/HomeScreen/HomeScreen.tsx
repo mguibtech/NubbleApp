@@ -17,7 +17,7 @@ import {err} from 'react-native-svg';
 import {useScrollToTop} from '@react-navigation/native';
 
 export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
-  const {postList, error, loading, refresh, fetchNexPage} = usePostList();
+  const {list: postList, error, loading, refresh, fetchNexPage} = usePostList();
 
   const flatListRef = React.useRef<FlatList<Post>>(null);
   useScrollToTop(flatListRef);
