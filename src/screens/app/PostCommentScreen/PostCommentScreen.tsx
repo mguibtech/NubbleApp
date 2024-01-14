@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import {Box, Screen, Text} from '@components';
+import {Box, Screen, Text, TextMessage} from '@components';
 import {PostComment, usePostCommentList} from '@domain';
 import {AppScreenProps} from '@routes';
 import {FlatList, ListRenderItemInfo} from 'react-native';
@@ -13,6 +13,7 @@ export function PostCommentScreen({
   const {list, fetchNexPage, hasNextPage} = usePostCommentList(
     route.params.postId,
   );
+  const [message, setMessage] = useState('');
 
   const {bottom} = useAppSafeArea();
 
@@ -20,21 +21,31 @@ export function PostCommentScreen({
     return <PostCommentItem postComment={item} />;
   }
 
+  function onPressSend() {}
+
   return (
-    <Screen canGoBack title="Comentarios">
-      <FlatList
-        data={list}
-        showsVerticalScrollIndicator={false}
-        renderItem={renderItem}
-        ListFooterComponent={
-          <PostCommnetBottom
-            fetchNexPage={fetchNexPage}
-            hasNextPage={hasNextPage}
-          />
-        }
-        ListFooterComponentStyle={{marginBottom: 20}}
-        contentContainerStyle={{paddingBottom: bottom}}
-      />
+    <Screen canGoBack title="Comentarios" flex={1}>
+      <Box flex={1} justifyContent="space-between">
+        <FlatList
+          data={list}
+          showsVerticalScrollIndicator={false}
+          renderItem={renderItem}
+          ListFooterComponent={
+            <PostCommnetBottom
+              fetchNexPage={fetchNexPage}
+              hasNextPage={hasNextPage}
+            />
+          }
+          ListFooterComponentStyle={{marginBottom: 20}}
+          contentContainerStyle={{paddingBottom: bottom}}
+        />
+        <TextMessage
+          value={message}
+          onChangeText={setMessage}
+          onPressSend={onPressSend}
+          placeholder="Adicione um comentario"
+        />
+      </Box>
     </Screen>
   );
 }
