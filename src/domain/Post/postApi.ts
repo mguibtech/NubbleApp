@@ -1,5 +1,6 @@
 import {MetaDataPageAPI, PageAPI, PageParams, api} from '@api';
 import {Post, PostAPI} from './postTypes';
+import {PostCommentAPI} from '../PostComment/postComentTypes';
 
 async function getList(params?: PageParams): Promise<PageAPI<PostAPI>> {
   //TODO: simular um delay na API
