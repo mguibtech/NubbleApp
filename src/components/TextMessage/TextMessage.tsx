@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 interface TextInputProps extends RNTextInputProps {
-  onPressSend: () => void;
+  onPressSend: (message: string) => void;
 }
 
 export function TextMessage({
@@ -43,7 +43,9 @@ export function TextMessage({
           {...rnTextInputProps}
           //   placeholderTextColor={Colors.gray2}
         />
-        <Pressable disabled={sendIsDisabled} onPress={onPressSend}>
+        <Pressable
+          disabled={sendIsDisabled}
+          onPress={() => onPressSend(value || '')}>
           <Text color={sendIsDisabled ? 'gray2' : 'primary'}>Enviar</Text>
         </Pressable>
       </Box>
