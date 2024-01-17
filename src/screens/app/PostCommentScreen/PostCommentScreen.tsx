@@ -33,6 +33,7 @@ export function PostCommentScreen({
         postComment={item}
         onRemoveComment={refresh}
         userId={id}
+        key={id.toString()}
         postAuthorId={postAuthorId}
       />
     );
@@ -44,6 +45,7 @@ export function PostCommentScreen({
         <FlatList
           data={list}
           showsVerticalScrollIndicator={false}
+          keyExtractor={item => item.id.toString()}
           renderItem={renderItem}
           ListFooterComponent={
             <PostCommnetBottom

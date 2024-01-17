@@ -27,7 +27,7 @@ export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
   }
 
   function renderItem({item}: ListRenderItemInfo<Post>) {
-    return <PostItem post={item} />;
+    return <PostItem post={item} key={item.id} />;
   }
 
   return (

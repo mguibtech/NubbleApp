@@ -10,5 +10,6 @@ export * from './Text/Text';
 export * from './TextInput/TextInput';
 export * from './ProfileAvatar/ProfileAvatar';
 export * from './TextMessage/TextMessage';
+export * from './Toast/Toast';
 
 export * from './PostItem/PostItem';
