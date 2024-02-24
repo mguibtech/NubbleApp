@@ -3,7 +3,7 @@ import React from 'react';
 import {Box, ProfileAvatar, Text} from '@components';
 import {PostComment, postCommentService, usePostCommentRemove} from '@domain';
 import {Alert, Pressable} from 'react-native';
-import {useToast} from '@services';
+import {useToast, useToastService} from '@services';
 
 interface Props {
   postComment: PostComment;
@@ -18,7 +18,7 @@ export function PostCommentItem({
   userId,
   postAuthorId,
 }: Props) {
-  const {showToast} = useToast();
+  const {showToast} = useToastService();
   const {mutate} = usePostCommentRemove({
     onSuccess: () => {
       onRemoveComment;
