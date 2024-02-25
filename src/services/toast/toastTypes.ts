@@ -1,10 +1,9 @@
 export type ToastPosition = 'top' | 'bottom';
-export type ToastType = 'success' | 'warning' | 'error';
-
+export type ToastType = 'success' | 'error';
 export interface Toast {
   message: string;
   type?: ToastType;
-  positional?: ToastPosition;
+  position?: ToastPosition;
   duration?: number;
   action?: {
     title: string;

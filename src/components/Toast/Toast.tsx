@@ -4,7 +4,7 @@ import {Animated} from 'react-native';
 import {ToastPosition} from '../../services/toast/toastTypes';
 import {useToast, useToastService} from '../../services/toast/usetToast';
 
-import {ToastContent} from './components/ToastContent';
+import {ToasContent} from './components/ToastContent';
 
 const DEFAULT_DURATION = 4000;
 
@@ -12,7 +12,7 @@ export function Toast() {
   const toast = useToast();
   const {hideToast} = useToastService();
 
-  const position: ToastPosition = toast?.positional || 'top';
+  const position: ToastPosition = toast?.position || 'top';
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   const runEnteringAnimation = useCallback(() => {
@@ -55,7 +55,7 @@ export function Toast() {
         opacity: fadeAnim,
         [position]: 100,
       }}>
-      <ToastContent toast={toast} />
+      <ToasContent toast={toast} />
     </Animated.View>
   );
 }
