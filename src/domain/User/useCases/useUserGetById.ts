@@ -2,7 +2,7 @@ import {useCallback, useEffect, useState} from 'react';
 import {User} from '../userTypes';
 import {userService} from '../userService';
 
-export function userGetById(id: number) {
+export function userUserGetById(id: number) {
   const [user, setUser] = useState<User>();
   const [error, setError] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(false);
